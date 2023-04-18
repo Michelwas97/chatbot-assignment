@@ -1,0 +1,36 @@
+<%- include('../partials/head.ejs') %>
+    <article class="chat-container">
+        <header>
+            <h1>ChatterMates</h1>
+            <a id="leave-btn"></a>
+        </header>
+
+        <main>
+            <!-- sidebar content related to the chatcontainer -->
+            <aside class="chat-sidebar">
+                <h2>Room name</h2>
+                <h3>Users:</h3>
+                <ul id="connected-users"></ul>
+            </aside>
+            <!-- chat container -->
+            <div>
+                <div class="chat-messages">
+                    <!-- messages go here -->
+                    <p>username <span>9:33</span></p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit neque inventore similique repellendus natus
+                        eum ullam error rerum est! Doloribus facere hic, esse id sit nulla harum ipsam praesentium repellendus.
+                    </p>
+                </div>
+
+                <!-- user input for sending message -->
+                <form action="submit">
+                    <input type="text" placeholder="Type your message here">
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </main>
+
+    </article>
+
+<%- include('../partials/footer.ejs') %>
