@@ -9,6 +9,7 @@ const port = process.env.PORT || 4242
 app.use(express.static(path.resolve('public')))
 
 const homeRouter = require('./router/home')
+const chatlobbyRouter = require('./router/chatlobby')
 
 // Set cache headers
 app.use((req, res, next) => {
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 
 /** ROUTES **/
 app.use(homeRouter)
+app.use(chatlobbyRouter)
 
 app.set('view engine', 'ejs')
 
@@ -33,9 +35,16 @@ io.on('connection', (socket) => {
   
       io.emit('message', message)
     })
+
+    socket.broadcast.emit('message', 'A new user has joined the chat!');
+
+    // Listen for chatMessage
+    socket.on('chatMessage', (msg) => {
+      io.emit('message', msg);
+    });
   
     socket.on('disconnect', () => {
-      console.log('user disconnected')
+      socket.broadcast.emit('message', 'A user has left the chat.');
     })
   })
 
