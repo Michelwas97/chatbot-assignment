@@ -8,7 +8,6 @@ socket.on('message', message => {
     outputMessage(message);
 
     // Scroll down
-
     chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
@@ -21,6 +20,10 @@ chatFrom.addEventListener('submit', (e) => {
 
     // Emit message to server
     socket.emit('chatMessage', msg);
+
+    // Clear input
+    e.target.elements.msg.value = '';
+    e.target.elements.msg.focus();
 });
 
 // Output message to DOM
@@ -28,9 +31,9 @@ function outputMessage(message) {
     const ul = document.querySelector('.chat-messages');
     const li = document.createElement('li');
     li.classList.add('chat-message');
-    li.innerHTML = `<h4>username <span>9:33</span></h4>
+    li.innerHTML = `<h4>${message.username} <span>${message.time}</span></h4>
     <p>
-        ${message}
+        ${message.text}
     </p>`;
     ul.appendChild(li);
 }

@@ -391,10 +391,11 @@ form input:first-of-type {
     display: flex;
     flex-direction: column;
 
-    padding: 2rem;
+    padding: 0 2rem;
     margin-bottom: 2rem;
 
     height: 100%;
+    min-height: 500px;
     max-height: 500px;
     overflow-y: scroll;
 
@@ -404,11 +405,16 @@ form input:first-of-type {
 }
 
 .chat-container .chat-messages > h3 {
-    align-self: center;
     width: 100%;
+
     border-bottom: 1px lightgray solid;
-    padding-bottom: .5rem;
+
+    padding: 2rem 0;
     margin-bottom: 2rem;
+
+    position: sticky;
+    top: 0;
+    background-color: var(--color-white);
 }
 
 .chat-message {

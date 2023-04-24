@@ -8,9 +8,11 @@
         <main>
             <!-- sidebar content related to the chatcontainer -->
             <aside class="chat-sidebar">
-                <h2>Room name</h2>
+                <h2>Room name: <%= room %></h2>
                 <h3>Users:</h3>
-                <ul id="connected-users"></ul>
+                <ul id="connected-users">
+                    <li><%= username %></li>
+                </ul>
             </aside>
             <!-- chat container -->
             <div class="chat-wrapper">
